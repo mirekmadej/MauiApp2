@@ -1,0 +1,50 @@
+1. System operacyjny nie zajmuje się 
+A. dostarczaniem mechanizmów do synchronizacji zadań i komunikacji pomiędzy zadaniami. 
+B. planowaniem oraz przydziałem czasu procesora poszczególnym zadaniom. 
+C. kontrolą i przydziałem pamięci operacyjnej dla uruchomionych zadań. 
+D*. tworzeniem źródeł aplikacji systemowych.
+2. Podstawową funkcją serwera FTP jest 
+A. monitoring sieci. 
+B. synchronizacja czasu. 
+C*. udostępnianie plików. 
+D. zarządzanie kontami poczty. 
+3. Do cech pojedynczego konta użytkownika pracującego w systemie Windows Serwer należy 
+A*. numer telefonu, pod który ma oddzwonić serwer w przypadku nawiązania połączenia telefonicznego przez tego użytkownika. 
+B. maksymalna wielkość pojedynczego pliku jaką użytkownik może zapisać na dysku serwera. 
+C. maksymalna wielkość pulpitu użytkownika  
+D. maksymalna wielkość profilu użytkownika.
+4. Który z protokołów jest protokołem synchronizacji czasu? 
+A. FTP 
+B*. NTP 
+C. HTTP 
+D. NNTP
+5. Litera S w protokole FTPS oznacza zabezpieczanie przesyłanych danych poprzez 
+A. logowanie. 
+B. autoryzację. 
+C*. szyfrowanie. 
+D. uwierzytelnianie. 
+6. Który z protokołów jest protokołem wykorzystywanym do zarządzania urządzeniami sieciowymi? 
+A. SMTP 
+B*. SNMP 
+C. SFTP 
+D. DNS 
+7. Translacją nazw domenowych na adresy sieciowe zajmuje się usługa 
+A*. DNS 
+B. DHCP 
+C. SMTP 
+D. SNMP
+8. Który z protokołów jest szyfrowanym protokołem terminalowym? 
+A*. SSH 
+B. TFTP 
+C. telnet 
+D. POP3
+9. Który protokół obsługuje rozproszone wysyłanie i pobieranie plików? 
+A. FTP 
+B. Radius 
+C. HTTPS 
+D*. BitTorrent
+10. AES (ang. Advanced Encryption Standard) 
+A. jest poprzednikiem DES (ang. Data Encryption Standard). 
+B. nie może być wykorzystany przy szyfrowaniu plików. 
+C*. wykorzystuje symetryczny algorytm szyfrujący. 
+D. nie może być zaimplementowany sprzętowo.

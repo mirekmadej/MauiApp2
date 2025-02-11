@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label x:Name="lblPytanie" Text="pytanie" />
+            <RadioButton x:Name="rnO1" Content="Odpowoiez 1" />
+            <RadioButton x:Name="rnO2" Content="Odpowoiez 2" />
+            <RadioButton x:Name="rnO3" Content="Odpowoiez 3" />
+            <RadioButton x:Name="rnO4" Content="Odpowoiez 4" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button
+                    Text="Poprzednie"
+                    x:Name="btnPoprzednie"
+                    Clicked="btnPoprzednieClicked" 
+                    IsEnabled="False"
+                    />
+                <Button
+                    Text="Nastepne"
+                    x:Name="btnNastepne"
+                    Clicked="btnNastepneClicked" 
+                    IsEnabled="True"
+                    />
+            </HorizontalStackLayout>
+            <Button
+                Text="wyslij formularz"
+                x:Name="brnWyslij"
+                IsEnabled="False"
+                Clicked="btnWyslijClicked"
+                />
+
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
