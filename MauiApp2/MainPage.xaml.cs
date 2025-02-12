@@ -1,5 +1,6 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 
 namespace MauiApp2
 {
@@ -26,11 +27,82 @@ namespace MauiApp2
             InitializeComponent();
             //wczytajDanePlik();
 
-            wczytajDaneSQL();
+            //wczytajDaneSQL();
+
+            dodajDaneSqlite();
+
+            wczytajDaneSQLite();
 
             //zapiszDoBazy();
+
             wylosujPytania();
             wypiszPytanie();
+        }
+        private void wczytajDaneSQLite()
+        {
+            string connStr = "DataSource=baza.db";
+            SQLiteConnection conn = new SQLiteConnection(connStr);
+            conn.Open();
+            string zapytanie = "SELECT * FROM testy";
+            SQLiteCommand command = conn.CreateCommand();
+            command.CommandText = zapytanie;
+            SQLiteDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Pytanie p = new Pytanie();
+                p.id = reader.GetInt32(0);
+                p.pytanie = reader.GetString(1);
+                p.o1 = reader.GetString(1);
+                p.o2 = reader.GetString(2);
+                p.o3 = reader.GetString(3);
+                p.o4 = reader.GetString(4);
+                p.odp = reader.GetString(5);
+                p.zaznOdp = "";
+                pytaniaWszystkie.Add(p);
+
+            } 
+            conn.Close();    
+        }
+        private void dodajDaneSqlite()
+        {
+            string connStr = "DataSource=baza.db";
+            SQLiteConnection conn = new SQLiteConnection(connStr);
+            conn.Open();
+            SQLiteCommand comm = conn.CreateCommand();
+
+            string qUsun = "DROP TABLE IF EXISTS testy";
+            comm.CommandText = qUsun;
+            comm.ExecuteNonQuery();
+            
+            string qTworzenieTabeli = "CREATE TABLE IF NOT EXISTS testy " +
+                "   (id INT NOT NULL , " +
+                "   pytanie VARCHAR(250) NOT NULL , " +
+                "   o1 VARCHAR(250) NOT NULL , " +
+                "   o2 VARCHAR(250) NOT NULL , " +
+                "   o3 VARCHAR(250) NOT NULL , " +
+                "   o4 VARCHAR(250) NOT NULL , " +
+                "   op VARCHAR(250) NOT NULL , " +
+                "   PRIMARY KEY (id));";
+            
+            comm.CommandText = qTworzenieTabeli;
+            comm.ExecuteNonQuery();
+            
+            string q2 = "INSERT INTO testy (id, pytanie, o1, o2, o3, o4, op) " +
+                "VALUES(1, 'pytanie', 'o1', 'o2', 'o3', 'o4', 'op')," +
+                "(2, 'System operacyjny nie zajmuje się ', 'dostarczaniem mechanizmów do synchronizacji zadań i komunikacji pomiędzy zadaniami. ', 'planowaniem oraz przydziałem czasu procesora poszczególnym zadaniom. ', 'kontrolą i przydziałem pamięci operacyjnej dla uruchomionych zadań. ', 'tworzeniem źródeł aplikacji systemowych.', 'tworzeniem źródeł aplikacji systemowych.')," +
+                "(3, 'Podstawową funkcją serwera FTP jest ', 'monitoring sieci. ', 'synchronizacja czasu. ', 'udostępnianie plików. ', 'zarządzanie kontami poczty. ', 'udostępnianie plików. ')," +
+                "(4, 'Do cech pojedynczego konta użytkownika pracującego w systemie Windows Serwer należy ', 'numer telefonu, pod który ma oddzwonić serwer w przypadku nawiązania połączenia telefonicznego przez tego użytkownika. ', 'maksymalna wielkość pojedynczego pliku jaki użytkownik może zapisać na dysku serwera. ', 'maksymalna wielkość pulpitu użytkownika  ', 'maksymalna wielkość profilu użytkownika.', 'numer telefonu, pod który ma oddzwonić serwer w przypadku nawiązania połączenia telefonicznego przez tego użytkownika. ')," +
+                "(5, 'Który z protokołów jest protokołem synchronizacji czasu? ', 'FTP ', 'NTP ', 'HTTP ', 'NNTP', 'NTP ')," +
+                "(6, 'Litera S w protokole FTPS oznacza zabezpieczanie przesyłanych danych poprzez ', 'logowanie. ', 'autoryzację. ', 'szyfrowanie. ', 'uwierzytelnianie. ', 'szyfrowanie. ')," +
+                "(7, 'Który z protokołów jest protoko?em wykorzystywanym do zarz?dzania urz?dzeniami sieciowymi? ', 'SMTP ', 'SNMP ', 'SFTP ', 'DNS ', 'SNMP ')," +
+                "(8, 'Translacj? nazw domenowych na adresy sieciowe zajmuje się usługa ', 'DNS ', 'DHCP ', 'SMTP ', 'SNMP', 'DNS ')," +
+                "(9, 'Który z protokołów jest szyfrowanym protokołem terminalowym? ', 'SSH ', 'TFTP ', 'telnet ', 'POP3', 'SSH ')," +
+                "(10, 'Który protokó?ł obsługuje rozproszone wysyłanie i pobieranie plików? ', 'FTP ', 'Radius ', 'HTTPS ', 'BitTorrent', 'BitTorrent')," +
+                "(11, ' AES (ang. Advanced Encryption Standard) ', 'jest poprzednikiem DES (ang. Data Encryption Standard). ', 'nie może być wykorzystany przy szyfrowaniu plików. ', 'wykorzystuje symetryczny algorytm szyfrujący. ', 'nie może być zaimplementowany sprzętowo.', 'wykorzystuje symetryczny algorytm szyfruj?cy. ');";
+            comm.CommandText = q2;
+            comm.ExecuteNonQuery();
+            
+            conn.Close();    
         }
         private void wczytajDaneSQL()
         {
