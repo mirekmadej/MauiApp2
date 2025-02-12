@@ -30,9 +30,12 @@
             </HorizontalStackLayout>
             <Button
                 Text="wyslij formularz"
-                x:Name="brnWyslij"
+                x:Name="btnWyslij"
                 IsEnabled="False"
                 Clicked="btnWyslijClicked"
+                />
+            <Label
+                x:Name="lblWynik"
                 />
 
 
