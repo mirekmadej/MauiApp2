@@ -9,10 +9,10 @@
             Spacing="25">
 
             <Label x:Name="lblPytanie" Text="pytanie" />
-            <RadioButton x:Name="rnO1" Content="Odpowoiez 1" />
-            <RadioButton x:Name="rnO2" Content="Odpowoiez 2" />
-            <RadioButton x:Name="rnO3" Content="Odpowoiez 3" />
-            <RadioButton x:Name="rnO4" Content="Odpowoiez 4" />
+            <RadioButton x:Name="rnO1" Content="Odpowoiez 1" CheckedChanged="zmianaRB" />
+            <RadioButton x:Name="rnO2" Content="Odpowoiez 2" CheckedChanged="zmianaRB" />
+            <RadioButton x:Name="rnO3" Content="Odpowoiez 3" CheckedChanged="zmianaRB" />
+            <RadioButton x:Name="rnO4" Content="Odpowoiez 4" CheckedChanged="zmianaRB" />
 
             <HorizontalStackLayout Spacing="10">
                 <Button

@@ -24,9 +24,9 @@ namespace MauiApp2
         public MainPage()
         {
             InitializeComponent();
-            wczytajDane();
+            //wczytajDanePlik();
 
-            //wczytajDaneSQL();
+            wczytajDaneSQL();
 
             //zapiszDoBazy();
             wylosujPytania();
@@ -34,7 +34,27 @@ namespace MauiApp2
         }
         private void wczytajDaneSQL()
         {
+            string connStr = "server=localhost;user=root;database=test;port=3306;password=";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string query = $"SELECT * FROM testy";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Pytanie p = new Pytanie();
+                p.id = reader.GetInt32(0);
+                p.pytanie = reader.GetString(1);
+                p.o1 = reader.GetString(2);
+                p.o2 = reader.GetString(3);
+                p.o3 = reader.GetString(4);
+                p.o4 = reader.GetString(5);
+                p.odp = reader.GetString(6);
+                p.zaznOdp = "";
 
+                pytaniaWszystkie.Add(p);
+            }
+            conn.Close();
         }
         private void zapiszDoBazy()
         {
@@ -162,7 +182,7 @@ namespace MauiApp2
             btnPoprzednie.IsEnabled = false;
             btnWyslij.IsEnabled = false;
         }
-        private void wczytajDane()
+        private void wczytajDanePlik()
         {
             string odp = "";
             string wyczysc(string linia)
